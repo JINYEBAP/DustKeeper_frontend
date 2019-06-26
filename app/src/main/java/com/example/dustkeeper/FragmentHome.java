@@ -1,18 +1,48 @@
 package com.example.dustkeeper;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.dustkeeper.MainActivity;
 
 import org.w3c.dom.Text;
 
+import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 public class FragmentHome extends Fragment {
+    public final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
+    private boolean isGPSEnabled;
+    private boolean isNetworkEnabled;
+    String gps_location;
+    RequestQueue mQueue;
+
+
+    @Override
+    public void onCreate(Bundle savedInstancState) {
+
+        super.onCreate(savedInstancState);
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -24,8 +54,39 @@ public class FragmentHome extends Fragment {
         TextView dustDegree = (TextView) view.findViewById(R.id.dustDegree);
         TextView ult_dustDegree = (TextView) view.findViewById(R.id.ult_dustDegree);
 
+    /*
+        mQueue= Volley.newRequestQueue(getActivity());
+        String url="http://pms9116.cafe24.com/dust.php";
+        StringRequest request=new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //Toast.makeText(getActivity(),"성공" + response ,Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+
+            @Override
+            protected Map<String,String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("location","마포구");
+                return params;
+            }
+
+        };
+        mQueue.add(request);*/
+
         /*gps 위치와 비교해서 현재 위치 string 출력*/
-        String gps_location = new String("마포구"); //GPS 받아오기
+        gps_location = new String("서울시 마포구");
+        //String gps_location = new String(""); //GPS 받아오기
 
         switch(gps_location){
             case "강남구":
@@ -133,5 +194,9 @@ public class FragmentHome extends Fragment {
         dustDegree.setText(degree + "㎍/m³");
         ult_dustDegree.setText(ult_degree + "㎍/m³");
         return view;
+    }
+
+    public void setGpsLocation(String str){
+        gps_location = new String(str);
     }
 }

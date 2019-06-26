@@ -19,6 +19,6 @@
     <item
         android:id="@+id/navigation_mileage_shop"
         android:icon="@drawable/ic_action_mileage_shop"
-        android:title="마일리지 샵" />
+        android:title="포인트 사용처" />
 
 </menu>
