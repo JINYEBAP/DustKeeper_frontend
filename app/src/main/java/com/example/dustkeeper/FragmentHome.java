@@ -100,7 +100,7 @@ public class FragmentHome extends Fragment {
     }
 
     public void setGpsLocation(String str){
-
+        if(str == null){return;}
         gps_location = new String(str);
         string_location.setText("서울시 " + gps_location);
         final String location = gps_location;
