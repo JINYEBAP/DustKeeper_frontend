@@ -62,7 +62,7 @@ public class FragmentChallengeList extends Fragment {
 
         // 마진 설정
         LinearLayout.LayoutParams Params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-        Params.setMargins(50,20,50,20);
+        Params.setMargins(50,0,50,100);
         l.setLayoutParams(Params);
 
         return l;
