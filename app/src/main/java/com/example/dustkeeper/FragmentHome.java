@@ -14,11 +14,6 @@ import org.w3c.dom.Text;
 
 public class FragmentHome extends Fragment {
     @Override
-    public void onCreate(Bundle savedInstancState) {
-        super.onCreate(savedInstancState);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
