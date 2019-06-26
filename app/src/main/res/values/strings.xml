@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">DustKeeper</string>
+
     <string name="title_home">홈</string>
     <string name="title_challenge_list">챌린지 목록</string>
     <string name="title_challenge_gallery">챌린지 갤러리</string>
     <string name="title_mileage_shop">마일리지 샵</string>
+
+    <string name="location">서울시 광진구</string>
+
+    <string name="state_good">좋음</string>
+    <string name="state_normal">보통</string>
+    <string name="state_bad">나쁨</string>
+    <string name="state_very_bad">매우나쁨</string>
+
 </resources>
