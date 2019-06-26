@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isNetworkEnabled;
     private Geocoder geocoder = new Geocoder(MainActivity.this);
     public String Address;
+    int flag;
     //
 
     public BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        flag=0;
         // Fragment 전환
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frameLayout, fragmentHome).commitAllowingStateLoss();
@@ -248,11 +249,13 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        result += address[1] + " "+ address[2] + " " + address[3];
-        Address = new String(address[2]);
-        //FragmentHome tf = (FragmentHome) getSupportFragmentManager().findFragmentById(R.id.hom);
-        //tf.testFunction();
-
+        if(flag==0) {
+            result += address[1] + " " + address[2] + " " + address[3];
+            Address = new String(address[2]);
+            FragmentHome FH = (FragmentHome) getSupportFragmentManager().findFragmentById(R.id.frameLayout);
+            FH.setGpsLocation(Address);
+            flag = 1;
+        }
          return result;
     }
     //
